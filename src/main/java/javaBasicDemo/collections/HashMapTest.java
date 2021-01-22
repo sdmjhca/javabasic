@@ -1,5 +1,13 @@
 package javaBasicDemo.collections;
 
+import org.apache.commons.lang.time.DateUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,7 +28,7 @@ public class HashMapTest extends Thread{
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         /*HashMapTest hmt0 = new HashMapTest();
         HashMapTest hmt1 = new HashMapTest();
         HashMapTest hmt2 = new HashMapTest();
@@ -53,10 +61,24 @@ public class HashMapTest extends Thread{
                 value.remove("羽绒服");
             }
         }
+        for(Map.Entry<String,List<String>> entry : hashMapList.entrySet()){
+            entry.getKey();
+        }
+        hashMapList.forEach(HashMapTest::foreach);
         hashMapList.remove("女装","羽绒服");
         hashMapList.remove("女装",new ArrayList<String>().add("羽绒服"));
         System.out.println(hashMapList.toString());
 
+        System.out.println("=="+LocalDateTime.now());
+        System.out.println("---"+Instant.now());
+        System.out.println(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL));
+
+        System.out.println(new Date(System.currentTimeMillis()));
+
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(sf.parse("2018-02-26").compareTo(sf.parse(sf.format(new Date()))));
+
+        System.out.println(sf.parse("2018-02-26").getTime());
     }
     static final int hash(Object key) {
         int h;
@@ -70,5 +92,9 @@ public class HashMapTest extends Thread{
             hashMapList.put(key,list);
         }
         list.add(value);
+    }
+
+    public static void foreach(String s, List<String> list){
+        System.out.println("key = "+s+" and value = "+list.toString());
     }
 }

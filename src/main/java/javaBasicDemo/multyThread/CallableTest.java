@@ -13,7 +13,7 @@ public class CallableTest {
     static Callable callable = new Callable() {
         @Override
         public Object call() throws Exception {
-            System.out.println("执行callable方法，进行计算");
+            System.out.println(Thread.currentThread().getName()+"执行callable方法，进行计算");
             Thread.sleep(3000);
             System.out.println("执行时间3秒钟");
             flag = true;

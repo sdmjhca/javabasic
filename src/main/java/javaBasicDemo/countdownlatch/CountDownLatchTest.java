@@ -28,10 +28,11 @@ public class CountDownLatchTest extends Thread{
             e.printStackTrace();
         }
         System.out.println("执行结束");
+
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final CountDownLatch countDownLatch = new CountDownLatch(2);
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
         CountDownLatchTest test = new CountDownLatchTest(countDownLatch);
         new Thread(test).start();
         new Thread(new Runnable() {

@@ -41,7 +41,7 @@ public class TestMain {
                         try {
                             System.out.println("线程1 开始等待");
                             object.wait();
-                        } catch (InterruptedException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         System.out.println("线程1  继续执行");

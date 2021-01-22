@@ -1,7 +1,9 @@
 package javaBasicDemo.collections;
 
-import java.util.LinkedList;
-import java.util.ListIterator;
+import javaBasicDemo.stream.ActDto;
+
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * @author JHMI on 2017/8/22.
@@ -42,6 +44,66 @@ public class LinkedListTest {
         while (listIterator.hasPrevious()){
             System.out.println(listIterator.previous());
         }
+
+        LinkedList<Integer> list = new LinkedList();
+        for(int i = 0;i < 20;i++){
+            list.add(i);
+        }
+        System.out.println(list);
+        Stack<Integer> stack = new Stack();
+        for(Integer i : list){
+            stack.push(i);
+        }
+        /*Iterator<Integer> integerIterator = stack.iterator();
+        while (integerIterator.hasNext()){
+            list.add(integerIterator.next());
+        }*/
+        for(int i = 0, j = stack.size();i < j;i++){
+            list.set(i,stack.pop());
+        }
+        System.out.println(list);
+
+        ThreadFactory threadFactory = new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                return new Thread(r,"sdmjhca");
+            }
+        };
+
+        threadFactory.newThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).getName();
+        System.out.println(threadFactory.newThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).getName()+"--------");
+
+        Thread.currentThread().getContextClassLoader().getResource("");
+        System.out.println(Thread.currentThread().getContextClassLoader().getResource(""));
+
+        Map<String,List<String>> map = new ConcurrentHashMap<>();
+        List<String> list1 = new ArrayList<>();
+        list1.add("a");
+        map.put("aa",list1);
+        Map<String,ActDto> actDtoMap = new ConcurrentHashMap<>();
+        ActDto ca = new ActDto();
+        ca.setNum(1);
+        actDtoMap.put("a",ca);
+
+        System.out.println((System.currentTimeMillis()+"").substring(7));
+
+
+
+
+        String ss = "7E";
+
+        System.out.println(ss.getBytes());
+
     }
 
 }

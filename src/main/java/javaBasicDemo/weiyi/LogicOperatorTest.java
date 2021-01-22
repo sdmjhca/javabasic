@@ -1,5 +1,7 @@
 package javaBasicDemo.weiyi;
 
+import org.apache.commons.lang.math.NumberUtils;
+
 /**
  * @author JHMI on 2017/8/23.
  */
@@ -45,5 +47,17 @@ public class LogicOperatorTest {
 
         String value="";
         //boolean uselessBool=(value=httpReq.getParameter("param1"))!=null||(value=httpReq.getParameter("param2"))!=null||(value=httpReq.getParameter("param3"))!=null;
+
+        for(int jj =1;jj<16;jj++){
+
+            System.out.println("-------"+ (String.valueOf(jj).hashCode() >>> 16));
+            System.out.println("====="+(String.valueOf(jj).hashCode() % 16));
+        }
+
+        int mi = (int) (NumberUtils.toLong("18518983654") % 3);
+        System.out.println(mi);
+
+        System.out.println("test="+(~1));
+        System.out.println("test="+(~0));
     }
 }

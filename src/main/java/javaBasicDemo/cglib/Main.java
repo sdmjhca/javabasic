@@ -9,9 +9,11 @@ import java.lang.reflect.Proxy;
 public class Main {
     public static void main(String[] args) {
         HelloWorld helleWorld = new HelloWorldImplements();
-        HelloWorldHandler helloWorldHandler = new HelloWorldHandler(helleWorld);
+        HelloWorldHandler helloWorldHandler = new HelloWorldHandler(helleWorld,HelloWorld.class);
+        HelloWorld proxy = (HelloWorld) helloWorldHandler.getObject();
+        proxy.say("wtf");
         //HelleWorld proxy =(HelleWorld) Proxy.newProxyInstance(HelleWorld.class.getClassLoader(), HelloWorldImplements.class.getInterfaces(), helloWorldHandler);
-        HelloWorld proxy = (HelloWorld) Proxy.newProxyInstance(helleWorld.getClass().getClassLoader(), new Class[]{HelloWorld.class}, helloWorldHandler);
-        proxy.say("fuck the world");
+//        HelloWorld proxy = (HelloWorld) Proxy.newProxyInstance(helleWorld.getClass().getClassLoader(), new Class[]{HelloWorld.class}, helloWorldHandler);
+//        proxy.say("fuck the world");
     }
 }
